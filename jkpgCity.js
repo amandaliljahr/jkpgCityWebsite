@@ -2,18 +2,31 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-app.delete('/',
-(req, res, next) => {
-  console.log('Time:', Date.now());
-  next();
-},
-(req, res) => {
-  console.log('User send command');
-  res.send('<html><h1>Hey!</h1></html>');
+const { Pool } = require('pg')
+const pool = new Pool({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'postgres',
+  password: '12345',
+  port: '5432'
 });
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+app.get('/', async (req, res) => {
+  const data = await pool.query('SELECT * FROM stores');
+
+  res.send('Hello, World!');
 });
+
+const setupServer = async () => {
+
+  app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+  });
+
+}
+
+setupServer();
+
+
 
 
