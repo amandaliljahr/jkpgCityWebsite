@@ -6,7 +6,7 @@ class ModelClass {
   constructor() {
     this.connection = new Pool({
       user: 'postgres',
-      host: 'localhost',
+      host: process.env.DB_HOST || 'localhost',
       database: 'postgres',
       password: '12345',
       port: 5432,
@@ -58,6 +58,12 @@ class ModelClass {
     return rows;
   }
 
+  async getStoreByID(storeid) {
+    const { rows } = await this.connection.query(`
+      SELECT * FROM stores WHERE id = $1
+    `,[storeid]); //sql escape for sql injection
+    return rows;
+  }
 
 }
 

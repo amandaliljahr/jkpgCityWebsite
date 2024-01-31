@@ -1,6 +1,7 @@
+require('dotenv').config();
 const express = require('express'); //loads express library
 const app = express(); //runs express
-const port = 3000;  //select port
+const port = 3005;  //select port
 
 const ModelClass = require('./model.js');
 const Model = new ModelClass();
@@ -8,6 +9,14 @@ const Model = new ModelClass();
 app.get('/', async (req, res) => { //app.get creates a new get block
   const stores = await Model.getStores(); //load from json file
   res.json(stores); //sends to json file?
+});
+
+app.get('/store', async (req, res) => {
+  const {
+    storeid
+  } = req.query;
+  const stores = await Model.getStoreByID(storeid);
+  res.json(stores);
 });
 
 const server = async () => {
