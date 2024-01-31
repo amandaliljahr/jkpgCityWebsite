@@ -1,6 +1,6 @@
-const express = require('express'); 
-const app = express();
-const port = 3000; 
+const express = require('express'); //loads express library
+const app = express(); //runs express
+const port = 3000;  //select port
 
 const ModelClass = require('./model.js');
 const Model = new ModelClass();
