@@ -1,13 +1,13 @@
-const express = require('express');
-const app = express();
-const port = 3000;
+const express = require('express'); //loads express
+const app = express(); //runs express
+const port = 3000; //select port
 
 const ModelClass = require('./model.js');
 const Model = new ModelClass();
 
-app.get('/', async (req, res) => {
-  const stores = await Model.getStores();
-  res.json(stores);
+app.get('/', async (req, res) => { //app.get creates a new get block
+  const stores = await Model.getStores(); //load from json file
+  res.json(stores); //sends to json file?
 });
 
 const server = async () => {
