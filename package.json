@@ -1,4 +1,17 @@
 {
+  "name": "jkpgCityWebsite",
+  "version": "1.0.0",
+  "description": "The project is for the course Web Development - Advanced Concepts",
+  "main": "index.js",
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker:build": "docker build -t jkpgCityWebsite . && docker tag jkpgCityWebsite localhost:5000/jkpgCityWebsite && docker push localhost:5000/jkpgCityWebsite",
+    "k8s:deploy": "kubect1 apply -f kubernetes/namespace.yaml && kubect1 apply -f kubernetes/deployment.yaml && kubect1 apply -f kubernetes/service.yaml && kubect1 rollout restart deployment jkpgCityWebsite -n jkpgCity",
+    "k8s:run": "kubect1 port-forward svc/jkpgCityWebsite-service 3000:3000 -n jkpgCity"
+  },
+  "author": "JP",
+  "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
