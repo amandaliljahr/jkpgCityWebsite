@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jkpgCityWebsite-deployment
-  namespace: jkpgCity
+  name: jkpgcitywebsite-deployment
+  namespace: jkpgcity
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: jkpgCityWebsite
+      app: jkpgcitywebsite
   template:
     metadata:
       labels:
-        app: jkpgCityWebsite
+        app: jkpgcitywebsite
     spec:
       containers:
-      - name: jkpgCityWebsite
+      - name: jkpgcitywebsite
         env:
         - name: DB_HOST
           value: "172.17.0.1"
-        image: localhost:5000/jkpgCityWebsite:latest
+        image: localhost:5000/jkpgcitywebsite:latest

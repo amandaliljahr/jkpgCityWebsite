@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: jkpgCityWebsite
-  namespace: jkpgCity
+  name: jkpgcitywebsite
+  namespace: jkpgcity
 spec:
   selector:
-    app: jkpgCityWebsite
+    app: jkpgcitywebsite
   ports:
     - protocol: TCP
       port: 3000

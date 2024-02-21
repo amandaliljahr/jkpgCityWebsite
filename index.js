@@ -6,7 +6,9 @@ const port = 3005;  //select port
 const ModelClass = require('./model.js');
 const Model = new ModelClass();
 
-app.get('/', async (req, res) => { //app.get creates a new get block
+app.use(express.static(__dirname + '/public/'))
+
+app.get('/stores', async (req, res) => { //app.get creates a new get block
   const stores = await Model.getStores(); //load from json file
   res.json(stores); //sends to json file?
 });
