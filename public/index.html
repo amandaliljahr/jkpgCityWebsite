@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="start.js"></script>
     <title>JKPGCITY</title>
 </head>
-<body>
-    Stores in Jönköping City
-    <div id="storeList"></div>
+<h2>Stores in Jönköping City</h2>
+
+<label for="districtFilter">Filter by District:</label>
+<select id="districtFilter">
+    <option value="all">All Districts</option>
+    <option value="Väster">Väster</option>
+    <option value="Öster">Öster</option>
+</select>
+<label for="sortOrder">Sort Order:</label>
+<select id="sortOrder">
+    <option value="asc">Ascending</option>
+    <option value="desc">Descending</option>
+</select>
+<button onclick="applyFilters()">Apply Filters</button>
+
+<div id="storeList"></div>
 </body>
 
 </html>
