@@ -61,6 +61,32 @@ footer {
     text-align: center;
 }
 
+/* Store box styles */
+.store-box {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.store-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.store-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.store-link {
+    text-decoration: none;
+    color: #333;
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
     nav ul {

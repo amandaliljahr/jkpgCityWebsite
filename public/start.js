@@ -1,36 +1,20 @@
+document.addEventListener('DOMContentLoaded', () => {
+    fetchStores();
+});
+
 let storesData;
 
-fetch("http://localhost:3005/stores")
-    .then(response => response.json())
-    .then(stores => {
-        storesData = stores;
-        const storeListContainer = document.getElementById('storeList');
-
-        stores.forEach(store => {
-            if (store.url !== null) {
-                const storeLink = document.createElement('a');
-                storeLink.textContent = store.name;
-
-                if (store.url && !store.url.startsWith("http://") && !store.url.startsWith("https://")) {
-                    storeLink.href = "http://" + store.url;
-                } else {
-                    storeLink.href = store.url;
-                }
-
-                storeLink.target = "_blank";
-
-                storeListContainer.appendChild(storeLink);
-            } else {
-                const storeName = document.createElement('span');
-                storeName.textContent = store.name;
-                storeListContainer.appendChild(storeName);
-            }
-            storeListContainer.appendChild(document.createElement('br'));
+function fetchStores() {
+    fetch("http://localhost:3005/stores")
+        .then(response => response.json())
+        .then(stores => {
+            storesData = stores;
+            displayStores(stores);
+        })
+        .catch(error => {
+            console.error('Error fetching stores:', error);
         });
-    })
-    .catch(error => {
-        console.error('Error fetching stores:', error);
-    });
+}
 
 function applyFilters() {
     const districtFilter = document.getElementById('districtFilter').value;
@@ -54,28 +38,25 @@ function displayStores(stores) {
     storeListContainer.innerHTML = '';
 
     stores.forEach(store => {
-        const storeElement = document.createElement('div');
+        const storeBox = document.createElement('div');
+        storeBox.classList.add('store-box');
 
-        if (store.url !== null) {
-            const storeLink = document.createElement('a');
-            storeLink.textContent = store.name;
+        const storeName = document.createElement('h3');
+        storeName.classList.add('store-name');
+        storeName.textContent = store.name;
 
-            if (store.url && !store.url.startsWith("http://") && !store.url.startsWith("https://")) {
-                storeLink.href = "http://" + store.url;
-            } else {
-                storeLink.href = store.url;
-            }
-
-            storeLink.target = "_blank";
-            storeElement.appendChild(storeLink);
-        } else {
-            const storeName = document.createElement('span');
-            storeName.textContent = store.name;
-            storeElement.appendChild(storeName);
+        const storeLink = document.createElement('a');
+        storeLink.classList.add('store-link');
+        storeLink.textContent = store.url ? store.url : 'No URL provided';
+        if (store.url) {
+            storeLink.href = store.url.startsWith("http://") || store.url.startsWith("https://") ? store.url : "http://" + store.url;
+            storeLink.target = '_blank';
         }
-        storeListContainer.appendChild(storeElement);
 
-        storeListContainer.appendChild(document.createElement('br'));
+        storeBox.appendChild(storeName);
+        storeBox.appendChild(storeLink);
+        storeListContainer.appendChild(storeBox);
     });
 }
+
 document.getElementById('applyFiltersButton').addEventListener('click', applyFilters);
