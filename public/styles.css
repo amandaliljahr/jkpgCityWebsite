@@ -7,9 +7,10 @@ ul {
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
+    background: linear-gradient(to bottom, #b8bcef, #6278da);
+    background-attachment: fixed;
 }
 
 /* Navigation bar styles */
@@ -40,7 +41,6 @@ nav ul li a {
 
 /* Main styles */
 main {
-    /* padding: 2rem 0; */
     padding-top: 4rem;
 }
 
@@ -67,13 +67,21 @@ footer {
 }
 
 /* Store box styles */
+.store-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
 .store-box {
+    width: calc(33.33% - 1rem);
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 1rem;
     margin-bottom: 1rem;
     transition: transform 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
 }
 
 .store-box:hover {
@@ -101,5 +109,15 @@ footer {
 
     nav ul li {
         margin: 0.5rem 0;
+    }
+
+    .store-box {
+        width: calc(50% - 1rem);
+    }
+}
+
+@media (max-width: 576px) {
+    .store-box {
+        width: calc(100% - 1rem);
     }
 }

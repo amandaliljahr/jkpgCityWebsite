@@ -45,17 +45,15 @@ function displayStores(stores) {
         storeName.classList.add('store-name');
         storeName.textContent = store.name;
 
-        const storeLink = document.createElement('a');
-        storeLink.classList.add('store-link');
-        storeLink.textContent = store.url ? store.url : 'No URL provided';
-        if (store.url) {
-            storeLink.href = store.url.startsWith("http://") || store.url.startsWith("https://") ? store.url : "http://" + store.url;
-            storeLink.target = '_blank';
-        }
-
         storeBox.appendChild(storeName);
-        storeBox.appendChild(storeLink);
         storeListContainer.appendChild(storeBox);
+
+        storeBox.addEventListener('click', function(event) {
+            event.preventDefault();
+            if (store.url) {
+                window.open(store.url.startsWith("http://") || store.url.startsWith("https://") ? store.url : "http://" + store.url, '_blank');
+            }
+        });
     });
 }
 
