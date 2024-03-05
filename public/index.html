@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JKPGCITY</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
     <script src="start.js" defer></script>
 </head>
 <body>
@@ -30,22 +31,27 @@
             <div class="container">
                 <h2>Stores in Jönköping City</h2>
                 <div class="filters">
-                    <label for="districtFilter">Filter by District:</label>
-                    <select id="districtFilter">
-                        <option value="all">All Districts</option>
-                        <option value="Väster">Väster</option>
-                        <option value="Öster">Öster</option>
-                    </select>
-                    <label for="sortOrder">Sort Order:</label>
-                    <select id="sortOrder">
-                        <option value="asc">Ascending</option>
-                        <option value="desc">Descending</option>
-                    </select>
+                    <div class="filter-group">
+                        <label for="districtFilter">Filter by District:</label>
+                        <select id="districtFilter">
+                            <option value="all">All Districts</option>
+                            <option value="Väster">Väster</option>
+                            <option value="Öster">Öster</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="sortOrder">Sort Order:</label>
+                        <select id="sortOrder">
+                            <option value="asc">Ascending</option>
+                            <option value="desc">Descending</option>
+                        </select>
+                    </div>
                     <button id="applyFiltersButton">Apply Filters</button>
                 </div>
                 <div id="storeList" class="store-grid"></div>
             </div>
         </section>
+        
 
         <section id="contact">
             <div class="container">

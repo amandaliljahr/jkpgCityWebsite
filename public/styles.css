@@ -9,19 +9,40 @@ body {
     font-family: 'Roboto', sans-serif;
     color: #333;
     line-height: 1.6;
-    background: linear-gradient(to bottom, #b8bcef, #6278da);
+    background: linear-gradient(to bottom, #7268fe, #b6b1ff);
     background-attachment: fixed;
 }
 
 /* Navigation bar styles */
 header {
-    background-color: #fff;
+    background-color: #333;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 1rem 0;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
+}
+
+/* About, Stores, and Contact section styles */
+#about h2,
+#stores h2,
+#contact h2 {
+    font-size: 2rem;
+    color: #000;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#about p,
+#stores p,
+#contact p {
+    font-size: 1.2rem;
+    color: #000;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
 }
 
 nav ul {
@@ -31,12 +52,19 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0 1rem;
+    margin: 0 2rem;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #333;
+    color: #ffffff;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
+    margin-bottom: 2rem;
 }
 
 /* Main styles */
@@ -55,7 +83,42 @@ h2 {
 }
 
 .filters {
-    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem;
+}
+
+.filter-group label {
+    margin-right: 0.5rem;
+    font-weight: bold;
+}
+
+.filter-group select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#applyFiltersButton {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#applyFiltersButton:hover {
+    background-color: #555;
 }
 
 /* Footer styles */
@@ -70,29 +133,51 @@ footer {
 .store-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
+    padding: 0 10px;
 }
 
 .store-box {
-    width: calc(33.33% - 1rem);
-    background-color: #fff;
+    width: calc(25% - 20px);
+    max-width: 250px;
+    background-color: #c3c8fb;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    margin-bottom: 1rem;
-    transition: transform 0.3s, box-shadow 0.3s;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    margin-right: 20px;
+}
+
+.store-box:last-child {
+    margin-right: 0;
+}
+
+.store-box::after {
+    content: "";
+    display: block;
+    padding-top: 100%;
 }
 
 .store-box:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    background-color: #a1a8f9;
 }
 
 .store-name {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    color: #333;
 }
 
 .store-link {
@@ -101,23 +186,20 @@ footer {
 }
 
 /* Responsive styles */
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul li {
-        margin: 0.5rem 0;
-    }
-
+@media (max-width: 992px) {
     .store-box {
-        width: calc(50% - 1rem);
+        width: calc(33.33% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .store-box {
+        width: calc(50% - 20px);
     }
 }
 
 @media (max-width: 576px) {
     .store-box {
-        width: calc(100% - 1rem);
+        width: calc(100% - 20px);
     }
 }
