@@ -71,3 +71,33 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
+
+document.getElementById('addStoreForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('storeName').value;
+    const url = document.getElementById('storeUrl').value;
+    const district = document.getElementById('storeDistrict').value;
+
+    fetch("http://localhost:3005/store", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, url, district })
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('New store added successfully');
+            document.getElementById('storeName').value = '';
+            document.getElementById('storeUrl').value = '';
+            document.getElementById('storeDistrict').value = '';
+            fetchStores();
+        } else {
+            console.error('Failed to add new store');
+        }
+    })
+    .catch(error => {
+        console.error('Error adding new store:', error);
+    });
+});

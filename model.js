@@ -18,6 +18,7 @@ class ModelClass {
     await this.connection.connect();
   }
 
+  /*
   async setupDatabase() {
     await this.connection.query(`
     CREATE TABLE IF NOT EXISTS public.stores
@@ -51,6 +52,44 @@ class ModelClass {
       }
     }
   }
+  */
+
+  async setupDatabase() {
+    await this.connection.query(`
+        DELETE FROM stores
+    `);
+
+    await this.connection.query(`
+        CREATE TABLE IF NOT EXISTS public.stores
+        (
+            id SERIAL,
+            name text,
+            url text,
+            district text,
+            rating integer,
+            CONSTRAINT stores_pkey PRIMARY KEY (id)
+        )
+    `);
+
+    await this.connection.query(`
+        ALTER TABLE IF EXISTS public.stores
+        OWNER to postgres
+    `);
+
+    for (const store of stores) {
+        const { rows } = await this.connection.query(`
+            SELECT * FROM stores WHERE name = $1
+        `, [store.name]);
+
+        if (rows.length === 0) {
+            console.log(`Inserting ${store.name}`);
+            await this.connection.query(`
+                INSERT INTO stores (name, url, district)
+                VALUES ($1, $2, $3)
+            `, [store.name, store.url, store.district]);
+        }
+    }
+}
 
   async getStores() {
     const { rows } = await this.connection.query(`
@@ -64,6 +103,18 @@ class ModelClass {
       SELECT * FROM stores WHERE id = $1
     `,[storeid]); //sql escape for sql injection
     return rows;
+  }
+
+  async addStore(name, url, district) {
+      try {
+          await this.connection.query(`
+              INSERT INTO stores (name, url, district)
+              VALUES ($1, $2, $3)
+          `, [name, url, district]);
+      } catch (error) {
+          console.error('Error adding new store to database:', error);
+          throw error;
+      }
   }
 
 }
