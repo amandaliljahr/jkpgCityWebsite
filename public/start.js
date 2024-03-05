@@ -8,8 +8,8 @@ function fetchStores() {
     fetch("http://localhost:3005/stores")
         .then(response => response.json())
         .then(stores => {
-            storesData = stores;
-            displayStores(stores);
+            storesData = stores.sort((a, b) => a.name.localeCompare(b.name));
+            displayStores(storesData);
         })
         .catch(error => {
             console.error('Error fetching stores:', error);
