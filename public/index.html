@@ -1,28 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="start.js"></script>
     <title>JKPGCITY</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="start.js" defer></script>
 </head>
-<h2>Stores in Jönköping City</h2>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#stores">Stores</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<label for="districtFilter">Filter by District:</label>
-<select id="districtFilter">
-    <option value="all">All Districts</option>
-    <option value="Väster">Väster</option>
-    <option value="Öster">Öster</option>
-</select>
-<label for="sortOrder">Sort Order:</label>
-<select id="sortOrder">
-    <option value="asc">Ascending</option>
-    <option value="desc">Descending</option>
-</select>
-<button onclick="applyFilters()">Apply Filters</button>
+    <main>
+        <section id="about">
+            <div class="container">
+                <h2>About Jönköping City</h2>
+                <p>Welcome to Jönköping City! Explore our vibrant city and discover a variety of stores and attractions.</p>
+            </div>
+        </section>
 
-<div id="storeList"></div>
+        <section id="stores">
+            <div class="container">
+                <h2>Stores in Jönköping City</h2>
+                <div class="filters">
+                    <label for="districtFilter">Filter by District:</label>
+                    <select id="districtFilter">
+                        <option value="all">All Districts</option>
+                        <option value="Väster">Väster</option>
+                        <option value="Öster">Öster</option>
+                    </select>
+                    <label for="sortOrder">Sort Order:</label>
+                    <select id="sortOrder">
+                        <option value="asc">Ascending</option>
+                        <option value="desc">Descending</option>
+                    </select>
+                    <button id="applyFiltersButton">Apply Filters</button>
+                </div>
+                <div id="storeList"></div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>For inquiries or feedback, please contact us at info@jkpgcity.com</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 JKPGCITY. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
-
 </html>
