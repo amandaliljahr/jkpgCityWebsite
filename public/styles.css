@@ -12,11 +12,15 @@ body {
     line-height: 1.6;
 }
 
-/* Header styles */
+/* Navigation bar styles */
 header {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 1rem 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 nav ul {
@@ -36,7 +40,8 @@ nav ul li a {
 
 /* Main styles */
 main {
-    padding: 2rem 0;
+    /* padding: 2rem 0; */
+    padding-top: 4rem;
 }
 
 .container {
