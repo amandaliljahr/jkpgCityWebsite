@@ -22,31 +22,38 @@
     <main>
         <section id="about">
             <div class="container">
-                <h2>About Jönköping City</h2>
-                <p>Welcome to Jönköping City! Explore our vibrant city and discover a variety of stores and attractions.</p>
+                <div class="about-section">
+                    <h2>About Jönköping City</h2>
+                    <p>Welcome to Jönköping City! Explore our vibrant city and discover a variety of stores and attractions.</p>
+                </div>
             </div>
         </section>
-
+        
         <section id="addStore">
             <div class="container">
-                <h2>Add a New Store</h2>
-                <form id="addStoreForm">
-                    <div class="form-group">
-                        <label for="storeName">Name:</label>
-                        <input type="text" id="storeName" name="storeName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="storeUrl">URL:</label>
-                        <input type="text" id="storeUrl" name="storeUrl" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="storeDistrict">District:</label>
-                        <input type="text" id="storeDistrict" name="storeDistrict">
-                    </div>
-                    <button type="submit">Add Store</button>
-                </form>
+                <div id="toggleFormButtonContainer">
+                    <button id="toggleFormButton">Add a New Store</button>
+                </div>
+                <div id="addStoreFormContainer" class="collapsed">
+                    <h2>Add a New Store</h2>
+                    <form id="addStoreForm">
+                        <div class="form-group">
+                            <label for="storeName">Name:</label>
+                            <input type="text" id="storeName" name="storeName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="storeUrl">URL:</label>
+                            <input type="text" id="storeUrl" name="storeUrl" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="storeDistrict">District:</label>
+                            <input type="text" id="storeDistrict" name="storeDistrict">
+                        </div>
+                        <button type="submit">Add Store</button>
+                    </form>
+                </div>
             </div>
-        </section>
+        </section>        
 
         <section id="stores">
             <div class="container">

@@ -101,3 +101,17 @@ document.getElementById('addStoreForm').addEventListener('submit', function(even
         console.error('Error adding new store:', error);
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleFormButton = document.getElementById('toggleFormButton');
+    const addStoreFormContainer = document.getElementById('addStoreFormContainer');
+
+    toggleFormButton.addEventListener('click', () => {
+        addStoreFormContainer.classList.toggle('open');
+        if (addStoreFormContainer.classList.contains('open')) {
+            toggleFormButton.textContent = 'Close Form';
+        } else {
+            toggleFormButton.textContent = 'Add a New Store';
+        }
+    });
+});
