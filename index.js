@@ -32,6 +32,18 @@ app.post('/store', async (req, res) => {
   }
 });
 
+app.put('/store', async (req, res) => {
+  const { storeid, name, url, district } = req.body;
+  try {
+      await Model.updateStore(storeid, name, url, district);
+      console.log('Store updated:', name);
+      res.sendStatus(200);
+  } catch (error) {
+      console.error('Error updating store:', error);
+      res.sendStatus(500);
+  }
+});
+
 app.delete('/store', async (req, res) => {
   const { storeid } = req.query;
   try {

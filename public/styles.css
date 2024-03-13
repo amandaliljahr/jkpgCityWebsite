@@ -196,6 +196,12 @@ footer {
     right: 10px;
 }
 
+.edit-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
 .about-section {
     background-color: rgba(235, 172, 197, 0.4);
     padding: 15px;
@@ -281,6 +287,14 @@ footer {
 }
 
 #addStoreFormContainer.open {
+    display: block;
+}
+
+#editStoreContainer {
+    display: none;
+}
+
+#editStoreContainer.open {
     display: block;
 }
 

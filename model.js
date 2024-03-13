@@ -117,6 +117,18 @@ class ModelClass {
     }
   }
 
+  async updateStore(storeid, name, url, district) {
+    try {
+        await this.connection.query(`
+            UPDATE stores
+            SET name = $1, url = $2, district = $3
+            WHERE id = $4
+        `, [name, url, district, storeid]);
+    } catch (error) {
+        console.error('Error updating store:', error);
+        throw error;
+    }
+  }
 
   async deleteStoreById(storeid) {
     try {

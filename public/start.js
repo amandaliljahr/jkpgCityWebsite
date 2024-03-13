@@ -45,6 +45,14 @@ function displayStores(stores) {
         storeName.classList.add('store-name');
         storeName.textContent = store.name;
 
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        editButton.classList.add('edit-button');
+        editButton.addEventListener('click', function(event) {
+        event.stopPropagation(); 
+        editStore(store.id);
+    });
+
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
         deleteButton.classList.add('delete-button');
@@ -54,6 +62,7 @@ function displayStores(stores) {
         });
 
         storeBox.appendChild(storeName);
+        storeBox.appendChild(editButton);
         storeBox.appendChild(deleteButton);
         storeListContainer.appendChild(storeBox);
 
@@ -64,6 +73,48 @@ function displayStores(stores) {
             }
         });
     });
+}
+
+function editStore(storeId) {
+    const store = storesData.find(store => store.id === storeId);
+    if (store) {
+        document.getElementById('editStoreId').value = storeId;
+        document.getElementById('editStoreName').value = store.name;
+        document.getElementById('editStoreUrl').value = store.url;
+        document.getElementById('editStoreDistrict').value = store.district;
+        document.getElementById('editStoreContainer').classList.add('open');
+    }
+}
+
+document.getElementById('editStoreForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const storeId = document.getElementById('editStoreId').value;
+    const name = document.getElementById('editStoreName').value;
+    const url = document.getElementById('editStoreUrl').value;
+    const district = document.getElementById('editStoreDistrict').value;
+    await editStoreDetails(storeId, name, url, district);
+});
+
+async function editStoreDetails(storeId, name, url, district) {
+    console.log("Attempting to update store details...");
+    try {
+        const response = await fetch(`http://localhost:3000/store?storeid=${storeId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, url, district })
+        });
+        if (response.ok) {
+            console.log('Store details updated successfully');
+            fetchStores();
+            document.getElementById('editStoreContainer').classList.remove('open');
+        } else {
+            console.error('Failed to update store details');
+        }
+    } catch (error) {
+        console.error('Error updating store details:', error);
+    }
 }
 
 function deleteStore(storeid) {
