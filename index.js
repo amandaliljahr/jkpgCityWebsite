@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express'); //loads express library
 const app = express(); //runs express
-const port = 3005;  //select port
+const port = 3000;  //select port
 
 const ModelClass = require('./model.js');
 const Model = new ModelClass();

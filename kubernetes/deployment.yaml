@@ -18,4 +18,4 @@ spec:
         env:
         - name: DB_HOST
           value: "172.17.0.1"
-        image: localhost:5000/jkpgcitywebsite:latest
+        image: localhost:5001/jkpgcitywebsite

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: jkpgcitywebsite
+  name: jkpgcitywebsite-service
   namespace: jkpgcity
 spec:
   selector:

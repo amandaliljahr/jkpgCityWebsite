@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docker:build": "docker build -t jkpgcitywebsite . && docker tag jkpgcitywebsite localhost:5000/jkpgcitywebsite && docker push localhost:5000/jkpgcitywebsite",
-    "k8s:deploy": "kubectl apply -f kubernetes/namespace.yaml && kubectl apply -f kubernetes/deployment.yaml && kubectl apply -f kubernetes/service.yaml && kubectl rollout restart deployment jkpgcitywebsite -n jkpgcity",
+    "docker:build": "docker build -t jkpgcitywebsite . && docker tag jkpgcitywebsite localhost:5001/jkpgcitywebsite && docker push localhost:5001/jkpgcitywebsite",
+    "k8s:deploy": "kubectl apply -f kubernetes/namespace.yaml && kubectl apply -f kubernetes/deployment.yaml && kubectl apply -f kubernetes/service.yaml && kubectl rollout restart deployment jkpgcitywebsite-deployment -n jkpgcity",
     "k8s:run": "kubectl port-forward svc/jkpgcitywebsite-service 3000:3000 -n jkpgcity"
   },
   "author": "JP",
