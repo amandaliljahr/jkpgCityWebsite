@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 let storesData;
 
 function fetchStores() {
-    fetch("http://localhost:3005/stores")
+    fetch("http://localhost:3000/stores")
         .then(response => response.json())
         .then(stores => {
             storesData = stores.sort((a, b) => a.name.localeCompare(b.name));
@@ -45,7 +45,16 @@ function displayStores(stores) {
         storeName.classList.add('store-name');
         storeName.textContent = store.name;
 
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.classList.add('delete-button');
+        deleteButton.addEventListener('click', function(event) {
+            event.stopPropagation(); 
+            deleteStore(store.id);
+        });
+
         storeBox.appendChild(storeName);
+        storeBox.appendChild(deleteButton);
         storeListContainer.appendChild(storeBox);
 
         storeBox.addEventListener('click', function(event) {
@@ -54,6 +63,23 @@ function displayStores(stores) {
                 window.open(store.url.startsWith("http://") || store.url.startsWith("https://") ? store.url : "http://" + store.url, '_blank');
             }
         });
+    });
+}
+
+function deleteStore(storeid) {
+    fetch(`http://localhost:3000/store?storeid=${storeid}`, {
+        method: 'DELETE'
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Store deleted successfully');
+            fetchStores(); 
+        } else {
+            console.error('Failed to delete store');
+        }
+    })
+    .catch(error => {
+        console.error('Error deleting store:', error);
     });
 }
 
@@ -79,7 +105,7 @@ document.getElementById('addStoreForm').addEventListener('submit', function(even
     const url = document.getElementById('storeUrl').value;
     const district = document.getElementById('storeDistrict').value;
 
-    fetch("http://localhost:3005/store", {
+    fetch("http://localhost:3000/store", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

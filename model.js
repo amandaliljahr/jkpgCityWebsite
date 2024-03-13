@@ -106,16 +106,29 @@ class ModelClass {
   }
 
   async addStore(name, url, district) {
-      try {
-          await this.connection.query(`
-              INSERT INTO stores (name, url, district)
-              VALUES ($1, $2, $3)
-          `, [name, url, district]);
-      } catch (error) {
-          console.error('Error adding new store to database:', error);
-          throw error;
-      }
+    try {
+        await this.connection.query(`
+            INSERT INTO stores (name, url, district)
+            VALUES ($1, $2, $3)
+        `, [name, url, district]);
+    } catch (error) {
+        console.error('Error adding new store to database:', error);
+        throw error;
+    }
   }
+
+
+  async deleteStoreById(storeid) {
+    try {
+      await this.connection.query(`
+      DELETE FROM stores WHERE id = $1
+    `, [storeid]);
+    } catch (error) {
+      console.error('Error deleting store: ', error);
+      throw error;
+    }
+  }
+
 
 }
 

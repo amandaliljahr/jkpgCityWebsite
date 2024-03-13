@@ -7,7 +7,6 @@ const ModelClass = require('./model.js');
 const Model = new ModelClass();
 
 app.use(express.static(__dirname + '/public/'))
-
 app.use(express.json());
 
 app.get('/stores', async (req, res) => { //app.get creates a new get block
@@ -16,9 +15,7 @@ app.get('/stores', async (req, res) => { //app.get creates a new get block
 });
 
 app.get('/store', async (req, res) => {
-  const {
-    storeid
-  } = req.query;
+  const { storeid } = req.query;
   const stores = await Model.getStoreByID(storeid);
   res.json(stores);
 });
@@ -32,6 +29,17 @@ app.post('/store', async (req, res) => {
   } catch (error) {
       console.error('Error adding new store:', error);
       res.sendStatus(500);
+  }
+});
+
+app.delete('/store', async (req, res) => {
+  const { storeid } = req.query;
+  try {
+      await Model.deleteStoreById(storeid);
+      res.sendStatus(200);
+  } catch (error) {
+      console.error('Error deleting store: ', error);
+      res.sendStatus(500); 
   }
 });
 
