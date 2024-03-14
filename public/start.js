@@ -49,6 +49,7 @@ function displayStores(stores) {
         editButton.textContent = 'Edit';
         editButton.classList.add('edit-button');
         editButton.addEventListener('click', function(event) {
+            console.log(store, "hej")
         event.stopPropagation(); 
         editStore(store.id);
     });
@@ -77,6 +78,7 @@ function displayStores(stores) {
 
 function editStore(storeid) {
     const store = storesData.find(store => store.id === storeid);
+    console.log(store)
     if (store) {
         document.getElementById('editStoreId').value = storeid;
         document.getElementById('editStoreName').value = store.name;
@@ -92,6 +94,7 @@ document.getElementById('editStoreForm').addEventListener('submit', async functi
     const name = document.getElementById('editStoreName').value;
     const url = document.getElementById('editStoreUrl').value;
     const district = document.getElementById('editStoreDistrict').value;
+    console.log(storeId, "hej")
     await editStoreDetails(storeId, name, url, district);
 });
 
