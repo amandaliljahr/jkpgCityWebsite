@@ -83,6 +83,7 @@ function editStore(storeid) {
         document.getElementById('editStoreName').value = store.name;
         document.getElementById('editStoreUrl').value = store.url;
         document.getElementById('editStoreDistrict').value = store.district;
+        document.getElementById('editStoreDescription').value = store.description;
         document.getElementById('editStoreContainer').classList.add('open');
     }
 }
@@ -93,21 +94,23 @@ async function submitEditForm(event) {
     const name = document.getElementById('editStoreName').value;
     const url = document.getElementById('editStoreUrl').value;
     const district = document.getElementById('editStoreDistrict').value;
-    await editStoreDetails(storeId, name, url, district);
+    const description = document.getElementById('editStoreDescription').value;
+    await editStoreDetails(storeId, name, url, district, description);
 };
 
-async function editStoreDetails(storeid, name, url, district) {
+async function editStoreDetails(storeid, name, url, district, description) {
     console.log("Store ID:", storeid);
     console.log("Name:", name);
     console.log("URL:", url);
     console.log("District:", district);
+    console.log("Description:", description);
     try {
         const response = await fetch(`http://localhost:3000/store?storeid=${storeid}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({storeid, name, url, district })
+            body: JSON.stringify({storeid, name, url, district, description })
         });
         if (response.ok) {
             console.log('Store details updated successfully');
@@ -159,13 +162,14 @@ document.getElementById('addStoreForm').addEventListener('submit', function(even
     const name = document.getElementById('storeName').value;
     const url = document.getElementById('storeUrl').value;
     const district = document.getElementById('storeDistrict').value;
+    const description = document.getElementById('storeDescription').value;
 
     fetch("http://localhost:3000/store", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name, url, district })
+        body: JSON.stringify({ name, url, district, description })
     })
     .then(response => {
         if (response.ok) {
@@ -173,6 +177,7 @@ document.getElementById('addStoreForm').addEventListener('submit', function(even
             document.getElementById('storeName').value = '';
             document.getElementById('storeUrl').value = '';
             document.getElementById('storeDistrict').value = '';
+            document.getElementById('storeDescription').value = '';
             fetchStores();
         } else {
             console.error('Failed to add new store');

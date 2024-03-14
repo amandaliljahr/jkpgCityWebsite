@@ -21,9 +21,9 @@ app.get('/store', async (req, res) => {
 });
 
 app.post('/store', async (req, res) => {
-  const { name, url, district } = req.body;
+  const { name, url, district, description } = req.body;
   try {
-      await Model.addStore(name, url, district);
+      await Model.addStore(name, url, district, description);
       console.log('New store added:', name);
       res.sendStatus(200);
   } catch (error) {
@@ -33,14 +33,15 @@ app.post('/store', async (req, res) => {
 });
 
 app.put('/store', async (req, res) => {
-  const { storeid, name, url, district } = req.body;
+  const { storeid, name, url, district, description } = req.body;
   console.log("Received PUT request with data:");
     console.log("Store ID:", storeid);
     console.log("Name:", name);
     console.log("URL:", url);
     console.log("District:", district);
+    console.log("Description:", description);
   try {
-      await Model.updateStore(storeid, name, url, district);
+      await Model.updateStore(storeid, name, url, district, description);
       console.log('Store updated:', name);
       res.sendStatus(200);
   } catch (error) {
