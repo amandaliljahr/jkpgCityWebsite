@@ -49,7 +49,6 @@ function displayStores(stores) {
         editButton.textContent = 'Edit';
         editButton.classList.add('edit-button');
         editButton.addEventListener('click', function(event) {
-            console.log(store, "hej")
         event.stopPropagation(); 
         editStore(store.id);
     });
@@ -94,7 +93,6 @@ async function submitEditForm(event) {
     const name = document.getElementById('editStoreName').value;
     const url = document.getElementById('editStoreUrl').value;
     const district = document.getElementById('editStoreDistrict').value;
-    console.log(storeId, "hej")
     await editStoreDetails(storeId, name, url, district);
 };
 
