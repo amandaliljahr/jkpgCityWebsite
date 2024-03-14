@@ -75,10 +75,10 @@ function displayStores(stores) {
     });
 }
 
-function editStore(storeId) {
-    const store = storesData.find(store => store.id === storeId);
+function editStore(storeid) {
+    const store = storesData.find(store => store.id === storeid);
     if (store) {
-        document.getElementById('editStoreId').value = storeId;
+        document.getElementById('editStoreId').value = storeid;
         document.getElementById('editStoreName').value = store.name;
         document.getElementById('editStoreUrl').value = store.url;
         document.getElementById('editStoreDistrict').value = store.district;
@@ -95,10 +95,10 @@ document.getElementById('editStoreForm').addEventListener('submit', async functi
     await editStoreDetails(storeId, name, url, district);
 });
 
-async function editStoreDetails(storeId, name, url, district) {
+async function editStoreDetails(storeid, name, url, district) {
     console.log("Attempting to update store details...");
     try {
-        const response = await fetch(`http://localhost:3000/store?storeid=${storeId}`, {
+        const response = await fetch(`http://localhost:3000/store?storeid=${storeid}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
