@@ -96,7 +96,10 @@ document.getElementById('editStoreForm').addEventListener('submit', async functi
 });
 
 async function editStoreDetails(storeid, name, url, district) {
-    console.log("Attempting to update store details...");
+    console.log("Store ID:", storeid);
+    console.log("Name:", name);
+    console.log("URL:", url);
+    console.log("District:", district);
     try {
         const response = await fetch(`http://localhost:3000/store?storeid=${storeid}`, {
             method: 'PUT',

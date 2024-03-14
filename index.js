@@ -34,6 +34,11 @@ app.post('/store', async (req, res) => {
 
 app.put('/store', async (req, res) => {
   const { storeid, name, url, district } = req.body;
+  console.log("Received PUT request with data:");
+    console.log("Store ID:", storeid);
+    console.log("Name:", name);
+    console.log("URL:", url);
+    console.log("District:", district);
   try {
       await Model.updateStore(storeid, name, url, district);
       console.log('Store updated:', name);

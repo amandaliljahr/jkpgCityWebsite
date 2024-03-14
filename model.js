@@ -119,6 +119,7 @@ class ModelClass {
 
   async updateStore(storeid, name, url, district) {
     try {
+      console.log("Updating store with ID:", storeid);
         await this.connection.query(`
             UPDATE stores
             SET name = $1, url = $2, district = $3
