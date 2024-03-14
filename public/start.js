@@ -88,7 +88,7 @@ function editStore(storeid) {
     }
 }
 
-document.getElementById('editStoreForm').addEventListener('submit', async function(event) {
+async function submitEditForm(event) {
     event.preventDefault();
     const storeId = document.getElementById('editStoreId').value;
     const name = document.getElementById('editStoreName').value;
@@ -96,7 +96,7 @@ document.getElementById('editStoreForm').addEventListener('submit', async functi
     const district = document.getElementById('editStoreDistrict').value;
     console.log(storeId, "hej")
     await editStoreDetails(storeId, name, url, district);
-});
+};
 
 async function editStoreDetails(storeid, name, url, district) {
     console.log("Store ID:", storeid);
@@ -109,7 +109,7 @@ async function editStoreDetails(storeid, name, url, district) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name, url, district })
+            body: JSON.stringify({storeid, name, url, district })
         });
         if (response.ok) {
             console.log('Store details updated successfully');
@@ -188,6 +188,7 @@ document.getElementById('addStoreForm').addEventListener('submit', function(even
 document.addEventListener('DOMContentLoaded', () => {
     const toggleFormButton = document.getElementById('toggleFormButton');
     const addStoreFormContainer = document.getElementById('addStoreFormContainer');
+    document.getElementById('editStoreForm').addEventListener('submit', submitEditForm);
 
     toggleFormButton.addEventListener('click', () => {
         addStoreFormContainer.classList.toggle('open');
