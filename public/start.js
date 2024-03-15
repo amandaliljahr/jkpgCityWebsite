@@ -49,10 +49,10 @@ function displayStores(stores) {
 
         const moreInfoButton = document.createElement('button');
         moreInfoButton.textContent = 'More Info';
-        moreInfoButton.classList.add('more-info-button'); // Correct class added here
+        moreInfoButton.classList.add('more-info-button'); 
         moreInfoButton.addEventListener('click', function(event) {
             event.stopPropagation();
-            console.log('More Info button clicked for store:', store.id); // Logging added here
+            console.log('More Info button clicked for store:', store.id);
             toggleStoreInfo(store.id);
         });
 
