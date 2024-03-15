@@ -41,17 +41,41 @@ function displayStores(stores) {
         const storeBox = document.createElement('div');
         storeBox.classList.add('store-box');
 
+        storeBox.setAttribute('data-id', store.id);
+
         const storeName = document.createElement('h3');
         storeName.classList.add('store-name');
         storeName.textContent = store.name;
+
+        const moreInfoButton = document.createElement('button');
+        moreInfoButton.textContent = 'More Info';
+        moreInfoButton.classList.add('more-info-button'); // Correct class added here
+        moreInfoButton.addEventListener('click', function(event) {
+            event.stopPropagation();
+            console.log('More Info button clicked for store:', store.id); // Logging added here
+            toggleStoreInfo(store.id);
+        });
+
+        const infoContainer = document.createElement('div');
+        infoContainer.classList.add('store-info');
+        infoContainer.style.display = 'none';
+
+        const districtInfo = document.createElement('p');
+        districtInfo.textContent = `District: ${store.district}`;
+
+        const descriptionInfo = document.createElement('p');
+        descriptionInfo.textContent = `Description: ${store.description}`;
+
+        infoContainer.appendChild(districtInfo);
+        infoContainer.appendChild(descriptionInfo);
 
         const editButton = document.createElement('button');
         editButton.textContent = 'Edit';
         editButton.classList.add('edit-button');
         editButton.addEventListener('click', function(event) {
-        event.stopPropagation(); 
-        editStore(store.id);
-    });
+            event.stopPropagation(); 
+            editStore(store.id);
+        });
 
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
@@ -62,6 +86,8 @@ function displayStores(stores) {
         });
 
         storeBox.appendChild(storeName);
+        storeBox.appendChild(moreInfoButton);
+        storeBox.appendChild(infoContainer);
         storeBox.appendChild(editButton);
         storeBox.appendChild(deleteButton);
         storeListContainer.appendChild(storeBox);
@@ -73,6 +99,17 @@ function displayStores(stores) {
             }
         });
     });
+}
+
+
+function toggleStoreInfo(storeid) {
+    const storeInfo = document.querySelector(`.store-box[data-id="${storeid}"] .store-info`);
+    if (storeInfo.style.display === 'none') {
+        storeInfo.style.display = 'block';
+    } else {
+        storeInfo.style.display = 'none';
+    }
+
 }
 
 function editStore(storeid) {

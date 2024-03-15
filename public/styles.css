@@ -190,6 +190,13 @@ footer {
     color: #333;
 }
 
+.more-info-button {
+    position: absolute;
+    top: 10px; /* Adjust top position as needed */
+    left: 10px; /* Adjust left position as needed */
+}
+
+
 .delete-button {
     position: absolute;
     bottom: 10px;
@@ -201,6 +208,8 @@ footer {
     bottom: 10px;
     left: 10px;
 }
+
+
 
 .about-section {
     background-color: rgba(235, 172, 197, 0.4);
