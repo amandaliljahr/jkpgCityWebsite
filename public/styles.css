@@ -307,6 +307,36 @@ footer {
     display: block;
 }
 
+.store-info {
+    display: none;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    z-index: 1;
+}
+
+.store-info p {
+    margin-bottom: 10px;
+}
+
+.store-info::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    border-width: 10px;
+    border-top-color: #fff;
+    transform: translateX(-50%);
+}
+
+
 /* Responsive styles */
 @media (max-width: 992px) {
     .store-box {
