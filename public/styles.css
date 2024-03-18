@@ -317,8 +317,10 @@ footer {
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
-    width: 80%;
+    width: 110%;
     z-index: 1;
+    max-height: 200%;
+    overflow: auto;
 }
 
 .store-info p {
