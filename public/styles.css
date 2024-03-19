@@ -1,4 +1,3 @@
-User
 html,
 body,
 ul {
@@ -10,8 +9,6 @@ body {
     font-family: 'Roboto', sans-serif;
     color: #333;
     line-height: 1.6;
-    /* background: linear-gradient(to bottom, #7268fe, #b6b1ff);
-    background-attachment: fixed; */
     background-image: url('/Jonkoping-wallpaper.jpg');
     background-size: cover;
     background-attachment: fixed;
@@ -37,6 +34,19 @@ header {
     margin-bottom: 1rem;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
+}
+
+#stores h2,
+.filters h2 {
+    background-color: rgba(235, 172, 197, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    color: #000;
+    text-align: center;
 }
 
 #about p,
@@ -87,11 +97,11 @@ h2 {
 }
 
 .filters {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
     margin-bottom: 2rem;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgba(235, 172, 197, 0.6);
 }
 
 .filter-group {
@@ -145,7 +155,7 @@ footer {
     position: relative;
     width: calc(25% - 20px);
     max-width: 250px;
-    background-color: #c3c8fb;
+    background-color: rgba(235, 172, 197, 0.8);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -173,7 +183,7 @@ footer {
 .store-box:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    background-color: #a1a8f9;
+    background-color: rgba(177, 125, 146, 0.8);
 }
 
 .store-name {
@@ -212,7 +222,7 @@ footer {
 
 
 .about-section {
-    background-color: rgba(235, 172, 197, 0.4);
+    background-color: rgba(235, 172, 197, 0.6);
     padding: 15px;
     border-radius: 20px;
     max-width: 800px;
@@ -221,7 +231,7 @@ footer {
 
 /* Form section styles */
 #addStore {
-    background-color: rgba(235, 172, 197, 0.3);
+    background-color: rgba(235, 172, 197, 0.6);
     padding: 20px;
     border-radius: 10px;
     max-width: 800px;
@@ -303,6 +313,17 @@ footer {
     display: none;
 }
 
+#editStoreContainer,
+#addStoreFormContainer {
+    background-color: rgba(235, 172, 197, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 40px auto;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
 #editStoreContainer.open {
     display: block;
 }
@@ -338,6 +359,21 @@ footer {
     transform: translateX(-50%);
 }
 
+#contact {
+    background-color: rgba(235, 172, 197, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 40px auto;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#contact h2 {
+    font-size: 2rem;
+    color: #000;
+    margin-bottom: 1rem;
+    text-align: center;
+}
 
 /* Responsive styles */
 @media (max-width: 992px) {
